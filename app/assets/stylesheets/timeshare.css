@@ -1,0 +1,25 @@
+// Place all the styles related to the Timeshare controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.button {
+  background-color: #fb6551;
+  border: none;
+  color: black;
+  padding: 20px 36px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+}
+
+
+.button {
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: #00cc66;
+  color:white;
+}
+

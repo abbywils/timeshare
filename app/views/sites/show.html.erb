@@ -45,5 +45,19 @@
   <%= @site.country %>
 </p>
 
-<%= link_to 'Edit', edit_site_path(@site) %> |
-<%= link_to 'Back', sites_path %>
+<div id="map" style="height: 600px;">
+  <%=
+    map(:center => {
+      :latlng => [@site.latitude, @site.longitude],
+      :zoom => 1.5
+    },
+    :markers => [
+    {
+       :latlng => [@site.latitude, @site.longitude],
+    }
+  ]
+)
+  %>
+</div>
+
+<%= link_to 'Back', root_path %>
