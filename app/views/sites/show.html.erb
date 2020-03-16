@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sitename:</strong>
+  <%= @site.sitename %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @site.description %>
+</p>
+
+<p>
+  <strong>Dateinscribed:</strong>
+  <%= @site.dateinscribed %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @site.longitude %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @site.latitude %>
+</p>
+
+<p>
+  <strong>Area:</strong>
+  <%= @site.area %>
+</p>
+
+<p>
+  <strong>Site Type:</strong>
+  <%= @site.sitetype %>
+</p>
+
+<p>
+  <strong>Countryname:</strong>
+  <%= @site.countryname %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @site.country %>
+</p>
+
+<%= link_to 'Edit', edit_site_path(@site) %> |
+<%= link_to 'Back', sites_path %>

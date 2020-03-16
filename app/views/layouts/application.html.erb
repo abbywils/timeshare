@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Timeshare</title>
+    <title>Heritige Timeshare</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -9,7 +9,15 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <div class="px container">
+    <%= render :partial=>"layouts/menu" %>
+    <br>
+    <center>
+    <%= link_to "Home", root_path %>  |  
+    <%= link_to "Country Data", countries_path %>  |  
+    <%= link_to "Site Data", sites_path %>
+    </center>
+    <br>
     <%= yield %>
-  </body>
+  </div>
 </html>
