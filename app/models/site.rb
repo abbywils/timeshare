@@ -1,9 +1,9 @@
 class Site < ApplicationRecord
-  validates :sitename, :description,  :country_id, :dateinscribed, :longitude, :latitude, :area, :sitetype, :countryname, presence: true
+  validates :sitename, :description,  :country_id, :dateinscribed, :longitude, :latitude, :area, :sitetype, presence: true
   belongs_to :country
   
 
-def self.search(sitetype: "", country_id: "", region: "")
+  def self.search(sitetype: "", country_id: "", region: "")
     results = Site.all
     
     if !sitetype.blank?

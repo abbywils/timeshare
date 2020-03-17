@@ -8,7 +8,6 @@ class CreateSites < ActiveRecord::Migration[5.2]
       t.decimal :latitude
       t.decimal :area
       t.string :sitetype
-      t.string :countryname
       t.references :country, foreign_key: true
 
       t.timestamps

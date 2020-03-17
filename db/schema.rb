@@ -26,8 +26,7 @@ ActiveRecord::Schema.define(version: 2020_03_16_112927) do
     t.decimal "longitude"
     t.decimal "latitude"
     t.decimal "area"
-    t.string "category"
-    t.string "countryname"
+    t.string "sitetype"
     t.integer "country_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
