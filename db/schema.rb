@@ -27,6 +27,9 @@ ActiveRecord::Schema.define(version: 2020_03_19_152834) do
     t.decimal "latitude"
     t.decimal "area"
     t.string "sitetype"
+    t.integer "cost"
+    t.integer "totalshares"
+    t.integer "code"
     t.integer "country_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

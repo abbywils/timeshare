@@ -24,8 +24,7 @@ namespace :parsing do
     Site.destroy_all
 
     CSV.foreach("lib/assets/sites.csv", :headers =>true, encoding: "utf-8") do |row |
-      # p row.inspect #just so that we know the file's being read
-      # p row[8]
+
       
       country = Country.where(["countryname = ?", row[7]]).first
       #create new model instances with the data
@@ -37,6 +36,9 @@ namespace :parsing do
         longitude: row[3].to_d,
         area: row[5].to_d,
         sitetype: row [6],
+        cost: row [8].to_i,
+        totalshares: row [9].to_i,
+        code: row [10].to_i,
         country_id: country.id
       )
     end
