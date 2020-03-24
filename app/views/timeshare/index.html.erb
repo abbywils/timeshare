@@ -2,9 +2,12 @@
 
 <div class="px pt-4 container">
 
-<h1>Welcome to Heritage Time Share!</h1>
-<p> Want to acquire a totally unique, historic and world-class timeshare? </p>
-<p><strong>Use the search form below to explore the sites available.</strong></p>
+<strong>Welcome to Heritage Timeshare! This is a once in a lifetime chance to own a piece of a UNESCO world heritage site!</strong>
+<br>
+<br>
+Don't miss out! Use the search form below to explore the sites available.
+<br>
+<br>
 
 <%= form_tag(timeshare_index_path, method: :get) do %>
 
@@ -44,18 +47,17 @@
   
   <br>
   
-  <div class="p-5 container">
+<div class="p-5 container">
   <table class="table .thead-dark table-hover table-responsive">
     <thead>
       <tr>
         <th>Site Name</th>
         <th>Site Type</th>
-        <th>Date Inscribed</th>
         <th>Country</th>
-        <th>Region</th>
-        <th>Latitude</th>
-        <th>Longitude</th>
+        <th>Date Inscribed</th>
         <th>Area</th>
+        <th>Cost</th>
+        <th>Shares Remaining</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -65,17 +67,17 @@
         <tr>
           <td><%= site.sitename %></td>
           <td><%= site.sitetype %></td>
-          <td><%= site.dateinscribed %></td>
           <td><%= site.country.countryname %></td>
-          <td><%= site.country.region %></td>
-          <td><%= site.latitude %></td>
-          <td><%= site.longitude %></td>
+          <td><%= site.dateinscribed %></td>
           <td><%= site.area %></td>
-          <td><%= link_to 'Map', site %></td>
+          <td><%= site.cost %></td>
+          <td><%= site.totalshares %></td>
+          <td><%= link_to 'View Listing', site, class: 'btn btn-primary' %></td>
         </tr>
       <% end %>
     </tbody>
-   </table>
+  </table>
+</div
 
 <% end %>
 
@@ -86,3 +88,4 @@
 </div>
 </div
 </font>
+

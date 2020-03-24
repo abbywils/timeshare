@@ -12,9 +12,9 @@
         <th>Site Type</th>
         <th>Country</th>
         <th>Date Inscribed</th>
-        <th>Latitude</th>
-        <th>Longitude</th>
         <th>Area</th>
+        <th>Cost</th>
+        <th>Shares Remaining</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -26,10 +26,10 @@
           <td><%= site.sitetype %></td>
           <td><%= site.country.countryname %></td>
           <td><%= site.dateinscribed %></td>
-          <td><%= site.latitude %></td>
-          <td><%= site.longitude %></td>
           <td><%= site.area %></td>
-          <td><%= link_to 'Show', site, class: 'btn btn-primary' %></td>
+          <td><%= site.cost %></td>
+          <td><%= site.totalshares %></td>
+          <td><%= link_to 'View Listing', site, class: 'btn btn-primary' %></td>
         </tr>
       <% end %>
     </tbody>

@@ -21,17 +21,23 @@
     <%= form.text_field :email %>
   </div>
 
-  <div class=”field”>
+  <div class="field">
    <%= form.label :password %>
    <%= form.password_field :password %>
   </div>
   
-  <div class=”field”>
-    <%= form.label:password_confirmation, "Confirmation" %>
+  <div class="field">
+    <%= form.label :password_confirmation, "password confirmation" %>
     <%= form.password_field:password_confirmation %>
+  </div>
+  
+  <div class="field">
+    <%= form.check_box :is_admin %>
+    <%= form.label :is_admin, "admin" %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+

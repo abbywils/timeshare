@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Sitename:</strong>
+  <strong>Site Name:</strong>
   <%= @site.sitename %>
 </p>
 
@@ -11,7 +11,7 @@
 </p>
 
 <p>
-  <strong>Dateinscribed:</strong>
+  <strong>Date Inscribed:</strong>
   <%= @site.dateinscribed %>
 </p>
 
@@ -26,7 +26,7 @@
 </p>
 
 <p>
-  <strong>Area:</strong>
+  <strong>Area (Hectares):</strong>
   <%= @site.area %>
 </p>
 
@@ -38,6 +38,21 @@
 <p>
   <strong>Country:</strong>
   <%= @site.country.countryname %>
+</p>
+
+<p>
+  <strong>Cost ($):</strong>
+  <%= @site.cost %>
+</p>
+
+<p>
+  <strong>Total Shares Remaining:</strong>
+  <%= @site.totalshares %>
+</p>
+
+<p>
+  <strong>Listing No:</strong>
+  <%= @site.code %>
 </p>
 
 <div id="map" style="height: 600px;">
