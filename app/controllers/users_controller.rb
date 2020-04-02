@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  skip_before_action :require_logged_in, only: [:new,:create]
+  skip_before_action :require_logged_in, only: [:new, :create]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, only: [:index]
 
   # GET /users
   # GET /users.json
@@ -11,6 +12,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    require_appropriate_access(@user)
   end
 
   # GET /users/new
@@ -20,15 +22,22 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    require_appropriate_access(@user)
   end
 
   # POST /users
   # POST /users.json
   def create
     @user = User.new(user_params)
-
+    if !admin?
+      @user.is_admin = false
+    end
+    
     respond_to do |format|
       if @user.save
+        if !logged_in?
+          log_in(@user)
+        end
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else

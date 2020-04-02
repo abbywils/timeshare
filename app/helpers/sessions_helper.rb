@@ -8,7 +8,8 @@ module SessionsHelper
     def current_user
         User.find_by(id: session[:user_id])
     end
- 
+    
+    # checks if the user is currently logged in as an admin
     def admin?
         user = current_user
         if logged_in?
@@ -35,5 +36,17 @@ module SessionsHelper
     # Logs out the current user.
     def log_out
         session.delete(:user_id)
+    end
+    
+    def require_admin
+        if !admin?
+            redirect_to login_url, notice:"You do not have admin access"
+        end
+    end
+    
+    def require_appropriate_access(user)
+        if current_user.id != user.id && !admin? 
+          redirect_to login_url, notice:"You do not have access to this page"
+        end
     end
 end

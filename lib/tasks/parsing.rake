@@ -43,5 +43,20 @@ namespace :parsing do
       )
     end
   end
+  
+  desc "Create admin user"
+  task seed_admin: :environment do
+    admin = User.new(
+      name: 'Abby Wilson', 
+      email: 'abbywils@hawaii.edu', 
+      password: 'sadsam', 
+      password_confirmation: 'sadsam',
+      is_admin: true
+    )
+    admin.save
+  end
 end
+
+
+
 
