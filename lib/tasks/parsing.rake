@@ -53,10 +53,9 @@ namespace :parsing do
       password_confirmation: 'sadsam',
       is_admin: true
     )
+    admin.cart = Cart.new
     admin.save
   end
 end
-
-
 
 

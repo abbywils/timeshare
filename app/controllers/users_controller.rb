@@ -32,6 +32,8 @@ class UsersController < ApplicationController
     if !admin?
       @user.is_admin = false
     end
+    @user.cart = Cart.new
+    #create a cart for the new user
     
     respond_to do |format|
       if @user.save

@@ -1,0 +1,40 @@
+<% if notice %>
+  <aside id="notice"><%= notice %></aside>
+<% end %>
+
+<h2>Your Cart</h2>
+<ul
+  <% @cart.line_items.each do |item| %>
+    <li><%= item.site.sitename %></li>
+  <% end %>
+</ul>
+
+<%= form_with(url: checkout_path(@cart), method: :post ) do |f| %>
+  <%= f.submit "Checkout" , data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %>
+<% end %>
+
+<!--<div class="field">-->
+<!--  <= form.label :number %>-->
+<!--  <= form.text_field :number %>-->
+<!--</div>-->
+
+<!--<div class="field">-->
+<!--  <= form.label :exp_date %>-->
+<!--  <= select_date Date.today, order: [:month, :year], prefix: :exp_date %>-->
+<!--</div>-->
+
+<!--<div class="field">-->
+<!--  <= form.label :name_on_card %>-->
+<!--  <= form.text_field :name_on_card %>-->
+<!--</div>-->
+
+<!--<div class="field">-->
+<!--  <= form.label :organisation %>-->
+<!--  <= form.select :organisation, CreditCard.organisations.keys, prompt: "Select a card type" %>-->
+<!--</div>-->
+
+<!--<div class="field">-->
+<!--  <= form.label :customer_id %>-->
+<!--  <= form.hidden_field :customer_id,:value=>@customer.id %>-->
+<!--  <= @customer.name %>-->
+<!--</div>-->

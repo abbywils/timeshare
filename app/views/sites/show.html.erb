@@ -55,6 +55,10 @@
   <%= @site.code %>
 </p>
 
+<p>
+  <%= button_to 'Add To Cart', line_items_path(site_id: @site) %>
+</p>
+
 <div id="map" style="height: 600px;">
   <%=
     map(:center => {
