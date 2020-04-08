@@ -1,5 +1,12 @@
 <h1>Log in</h1>
+
 <p id="notice"><%= notice %></p>
+
+<br>
+This is a <strong>very exclusive </strong> site. You have to be a registered user to get in. 
+<br>
+<br>
+
 <%= form_for(:session, url: login_path) do |f| %>
 
 <%= f.label :email %>
@@ -10,4 +17,5 @@
 
 <%= f.submit "Log in",class: "btn btn-primary" %>
 <% end %>
-<p>New user? <%= link_to "Sign up now!",new_user_path %></p>
+<br>
+<p>Not a registered user yet? Click <%= link_to "here",new_user_path %> to register.</p>

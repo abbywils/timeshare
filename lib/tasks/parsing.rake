@@ -49,6 +49,9 @@ namespace :parsing do
     admin = User.new(
       name: 'Abby Wilson', 
       email: 'abbywils@hawaii.edu', 
+      phone: '07904123456',
+      address: '252 Union Grove',
+      postcode: 'AB10 6TS',
       password: 'sadsam', 
       password_confirmation: 'sadsam',
       is_admin: true
