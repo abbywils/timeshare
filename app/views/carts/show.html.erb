@@ -3,38 +3,47 @@
 <% end %>
 
 <h2>Your Cart</h2>
+<br>
 <ul
   <% @cart.line_items.each do |item| %>
-    <li><%= item.site.sitename %></li>
+    <li><%= item.site.sitename %> ... <%= link_to 'remove item', item, method: :delete %></td></li>
   <% end %>
 </ul>
 
+<%= link_to 'Empty Cart', emptycart_path(@cart), method: :post %>
+<br>
+<br>
+<br>
+<h2>Checkout</h2>
+
+Please complete the form below to checkout.
+
+<br>
+<br>
+
 <%= form_with(url: checkout_path(@cart), method: :post ) do |f| %>
+  
+  <div class="field">
+    <%= f.label :cardnumber %>
+    <%= f.text_field :cardnumber %><br>
+  </div>
+  
+  <div class="field">
+    <%= f.label :expirydate %>
+    <%= f.text_field :expirydate %><br>
+  </div>
+  
+   <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+  </div>
+  
+   <div class="field">
+    <%= f.label :cardtype %>
+    <%= f.text_field :cardtype %><br>
+  </div>
+  
   <%= f.submit "Checkout" , data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %>
+  <br>
+  
 <% end %>
-
-<!--<div class="field">-->
-<!--  <= form.label :number %>-->
-<!--  <= form.text_field :number %>-->
-<!--</div>-->
-
-<!--<div class="field">-->
-<!--  <= form.label :exp_date %>-->
-<!--  <= select_date Date.today, order: [:month, :year], prefix: :exp_date %>-->
-<!--</div>-->
-
-<!--<div class="field">-->
-<!--  <= form.label :name_on_card %>-->
-<!--  <= form.text_field :name_on_card %>-->
-<!--</div>-->
-
-<!--<div class="field">-->
-<!--  <= form.label :organisation %>-->
-<!--  <= form.select :organisation, CreditCard.organisations.keys, prompt: "Select a card type" %>-->
-<!--</div>-->
-
-<!--<div class="field">-->
-<!--  <= form.label :customer_id %>-->
-<!--  <= form.hidden_field :customer_id,:value=>@customer.id %>-->
-<!--  <= @customer.name %>-->
-<!--</div>-->

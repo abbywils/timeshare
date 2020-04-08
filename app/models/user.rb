@@ -8,5 +8,6 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6}
   
   has_one :cart, dependent: :destroy
+  has_many :reservations, dependent: :destroy
 
 end

@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
+  resources :payments
+  # checkout_path(@cart) -> cart controller, checkout method, pass information about the cart
+  post '/carts/:id/checkout', to: 'carts#checkout', as: 'checkout'
+  post '/carts/:id/emptycart', to: 'carts#emptycart', as: 'emptycart'
+  
+  
   resources :reservations
   resources :line_items
-  resources :carts
+  resources :carts, only: [:index, :show]
+  
   get '/login', to: 'sessions#new'
+  
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
   resources :users

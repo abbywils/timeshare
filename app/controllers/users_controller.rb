@@ -7,6 +7,8 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    @payments = Payment.all
+    @reservations = Reservation.all
   end
 
   # GET /users/1

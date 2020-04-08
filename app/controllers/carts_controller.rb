@@ -1,5 +1,6 @@
 class CartsController < ApplicationController
-  before_action :set_cart, only: [:show, :edit, :update, :destroy, :checkout]
+  before_action :set_cart, only: [:show, :checkout, :emptycart]
+  before_action :require_admin, only: [:index]
 
   # GET /carts
   # GET /carts.json
@@ -10,69 +11,46 @@ class CartsController < ApplicationController
   # GET /carts/1
   # GET /carts/1.json
   def show
+    require_appropriate_access(@cart.user)
   end
 
-  # GET /carts/new
-  def new
-    @cart = Cart.new
-  end
-
-  # GET /carts/1/edit
-  def edit
-  end
-
-  # POST /carts
-  # POST /carts.json
-  def create
-    @cart = Cart.new(cart_params)
-
-    respond_to do |format|
-      if @cart.save
-        format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
-        format.json { render :show, status: :created, location: @cart }
-      else
-        format.html { render :new }
-        format.json { render json: @cart.errors, status: :unprocessable_entity }
+  def checkout
+    require_appropriate_access(@cart.user)
+    if params[:cardnumber].length != 16
+      redirect_to @cart, notice: 'Checkout failed (invalid card number)'
+    else
+      total = 0
+      @cart.line_items.each do |line_item|
+        reservation = Reservation.new(
+          site_id: line_item.site.id,
+          user_id: @cart.user.id
+        )
+        reservation.save
+        line_item.destroy
+        # add cost for this particular line_item 
+        total += line_item.site.cost
       end
-    end
-  end
-
-  # PATCH/PUT /carts/1
-  # PATCH/PUT /carts/1.json
-  def update
-    respond_to do |format|
-      if @cart.update(cart_params)
-        format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
-        format.json { render :show, status: :ok, location: @cart }
-      else
-        format.html { render :edit }
-        format.json { render json: @cart.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /carts/1
-  # DELETE /carts/1.json
-  def destroy
-    @cart.destroy
-    respond_to do |format|
-      format.html { redirect_to carts_url, notice: 'Cart was successfully destroyed.' }
-      format.json { head :no_content }
+    
+      payment = Payment.new(
+        user: @cart.user, # user_id: @cart.user.id,
+        total: total
+      )
+    
+      redirect_to @cart, notice: 'Checkout successful. You will receive a confirmation email shortly'
     end
   end
   
-  def checkout
-    redirect_to @cart, notice: 'Checkout successful'
+  def emptycart
+    require_appropriate_access(@cart.user)
+    @cart.line_items.each do |line_item|
+      line_item.delete
+    end
+    redirect_to @cart, notice: 'Cart is empty'
   end
-
+    
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cart
       @cart = Cart.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def cart_params
-      params.fetch(:cart, {})
     end
 end
