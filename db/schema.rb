@@ -72,7 +72,6 @@ ActiveRecord::Schema.define(version: 2020_04_08_152750) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.string "phone"
     t.string "address"
     t.string "postcode"
     t.string "password_digest"
