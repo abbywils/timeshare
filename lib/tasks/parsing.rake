@@ -58,6 +58,21 @@ namespace :parsing do
     admin.cart = Cart.new
     admin.save
   end
+
+  desc "Create normal user"
+  task seed_normal: :environment do
+    normal = User.new(
+      name: 'Bruce Scharlau', 
+      email: 'bruce@awad.com', 
+      address: 'Meston Walk',
+      postcode: 'AB24 3UE',
+      password: 'iloveagile', 
+      password_confirmation: 'iloveagile',
+      is_admin: false
+    )
+    normal.cart = Cart.new
+    normal.save
+  end
 end
 
 

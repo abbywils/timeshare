@@ -14,7 +14,7 @@ This is a Ruby on Rails app based on open data on World Hertiage Sites from UNES
 
 A live version of *Heritage Timeshare* is deployed on Heroku, and can be accessed using the following link:
 
-> XXXXXX ADD LINK IN HERE XXXXX
+> https://heritage-timeshare.herokuapp.com 
 
 **To login, you can sign in using the admin account:**
 

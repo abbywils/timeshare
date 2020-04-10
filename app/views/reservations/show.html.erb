@@ -1,14 +1,47 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @reservation.user %>
+  <strong>Buyer Name:</strong>
+  <%= @reservation.user.name %>
+</p>
+
+<p>
+  <strong>Buyer Email:</strong>
+  <%= @reservation.user.email %>
 </p>
 
 <p>
   <strong>Site:</strong>
-  <%= @reservation.site %>
+  <%= @reservation.site.sitename %>
 </p>
+
+
+<p>
+  <strong>Price ($):</strong>
+  <%= @reservation.site.cost %>
+</p>
+
+<p>
+  <strong>Pay Method:</strong>
+  Credit Card
+</p>
+
+
+<p>
+  <strong>Item Code:</strong>
+  <%= @reservation.site.code %>
+</p>
+
+<p>
+  <strong>Timeshare:</strong>
+  2 weeks per annum
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @reservation.created_at %>
+</p>
+
 
 <%= link_to 'Edit', edit_reservation_path(@reservation) %> |
 <%= link_to 'Back', reservations_path %>
